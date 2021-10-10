@@ -6,26 +6,13 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <meta charset="utf-8" />
 </head>
+
 </html>
 
 <?php
 
 function getArticle($nb=NULL)
 {
-
-
-
-
-//compare and sort
-/*function sortFunction( $a, $b ) {
-
-    return  strtotime($b["date"]) - strtotime($a["date"]);
-}
-usort($articles, "sortFunction");*/
-
-
-//eliminate wrong dates
-
   //connexion à la base
 $bdd = new PDO('mysql:host=localhost;dbname=monPremierSite;charset=utf8', 'root', '');
   
@@ -48,7 +35,9 @@ echo '<table>';
     echo'<th>' . 'Texte' . '</th>';
     echo'<th>' . 'Auteur' . '</th>';
     echo'<th>' . 'Date de publication' . '</th>';
-    echo'<th>' . 'Gérer' . '</th>';
+    echo'<th>' . 'Commenter' . '</th>';
+    echo'<th>' . 'Afficher les commentaires' . '</th>';
+    echo'<th>' . 'Supprimer' . '</th>';
      
 
 while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC))
@@ -62,32 +51,30 @@ while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC))
         echo '<td>' . $field . '</td>';
        else
 
-      echo '<td>' . '<input type="button" value="Click me" onclick="deleteArticle()">' . '</td>';
+     {
+      echo '<td><a href="ajoutCommentaire.php?id='.$field.' "> <img src="ajoutCommentaire.png" alt="Ajouter un commentaire"/> </a></td>';
+      echo '<td><a href="commentaires.php?id='.$field.' "> <img src="commentaire.png" alt="Afficher les commentaires"/> </a></td>';
+      echo '<td><a href="deleteArticle.php?id='.$field.' "> <img src="delete.jpg" alt ="Supprimer"/> </a></td>';
+       
+      
+     }
        
         
     }
-  
-   // echo '<td>' . 'cc' . '</td>';
+
     echo '</tr>';
 }      
 echo '</table>';
 
-
-$reponse->closeCursor();
-
+}?>
 
 
 
 
 
-}
-function deleteArticle(){
-    echo "hello";
-}
-  echo 'fffff'  ;
 
 
-?>
+
 
 
 

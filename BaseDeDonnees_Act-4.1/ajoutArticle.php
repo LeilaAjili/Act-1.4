@@ -33,7 +33,7 @@ include 'header.php';
 
    <label for="author">Auteur :</label>
    <input type="text" name="author" size="20" 
-   maxlength="40" value="Auteur" id="author" />
+   maxlength="40" value="" id="author" />
 
    <label for="pubDate">Date de publication :</label>
    <input id="pubDate" name="pubDate" type="date" value="2021-10-07">
